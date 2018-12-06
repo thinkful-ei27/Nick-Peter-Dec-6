@@ -3,9 +3,9 @@ $(
   function handleCatClick () {
   $('.thumbnail').on('click', function (e) {
     e.stopPropagation();
-    const catTarget = $(e.target).clone();
+    const catTarget = $(e.currentTarget).children().clone();
     $('.hero img').replaceWith(catTarget);
-    console.log("Oh, God.");
+    // console.log(e.currentTarget);
   });
 }
 );
