@@ -1,7 +1,17 @@
 'use strict';
-$(function handleCatClick () {
+$(
+  function handleCatClick () {
   $('.thumbnail').on('click', function (e) {
     e.stopPropagation();
-    console.log('it works', e.target);
+    const catTarget = $(e.target).clone();
+    $('.hero img').replaceWith(catTarget);
+    console.log("Oh, God.");
   });
-});
+}
+);
+
+
+
+//$('.hero').html(e.target);
+//console.log("Everything is broken.");
+//$(e.target).clone().appendTo('.hero');
