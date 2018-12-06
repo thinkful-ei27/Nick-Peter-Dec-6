@@ -13,6 +13,7 @@ function handleFormSubmit() {
 function main() {
   handleFormSubmit();
   handleCheck();
+  handleDelete();
 }
 
 $(main);
@@ -43,11 +44,11 @@ function handleCheck () {
     shoppingItem.toggleClass('shopping-item__checked');
   });
 }
-// Turn data into HTML and add to shopping list container
-// If user hit check button
-// toggle .shopping-item__checked class
-// If user hits delete button 
-// remove shopping list container and contents
 
-
-// Hint: you may find it helpful to read up on and use the following jQuery methods: .submit(), preventDefault(), toggleClass(), and closest().
+function handleDelete () {
+  $('.shopping-list').on('click', '.shopping-item-delete', function (e) {
+    e.stopPropagation();
+    const shoppingItem = $(e.currentTarget).closest('li');
+    shoppingItem.remove();
+  });
+}
