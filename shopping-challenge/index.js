@@ -12,23 +12,10 @@ function handleFormSubmit() {
 
 function main() {
   handleFormSubmit();
+  handleCheck();
 }
 
 $(main);
-// Create shopping list container 
-/*<ul class="shopping-list">
-      <li>
-        <span class="shopping-item">apples</span>
-        <div class="shopping-item-controls">
-          <button class="shopping-item-toggle">
-            <span class="button-label">check</span>
-          </button>
-          <button class="shopping-item-delete">
-            <span class="button-label">delete</span>
-          </button>
-        </div>
-      </li>
-*/
 
 function userContainerHTML(input) {
   const html = `<li>
@@ -42,9 +29,20 @@ function userContainerHTML(input) {
     </button>
   </div>
 </li>`;
-  return html;
+  return appendUserHTML(html);
 }
 
+function appendUserHTML (userHTML) {
+  $('.shopping-list').append(userHTML);
+}
+
+function handleCheck () {
+  $('.shopping-list').on('click', '.shopping-item-toggle', function (e) {
+    e.stopPropagation();
+    const shoppingItem = $(e.currentTarget).closest('li').children('span');
+    shoppingItem.toggleClass('shopping-item__checked');
+  });
+}
 // Turn data into HTML and add to shopping list container
 // If user hit check button
 // toggle .shopping-item__checked class
